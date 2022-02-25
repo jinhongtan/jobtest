@@ -1,0 +1,125 @@
+/* top_bar */
+
+.top_bar{
+    height: 40px;
+    background-color:orange;
+}
+
+.top_bar_content{
+    line-height: 40px;
+    margin: auto;
+}
+
+.top_bar_left{
+    float: left;
+}
+
+.top_bar_left ul li{
+    float: left;
+}
+
+.top_bar_left ul li{
+    margin-right: 12px;
+}
+
+.top_bar_right{
+    float: right;
+}
+
+.top_bar_right ul li{
+    float: right;
+}
+
+.top_bar_right ul li{
+    margin-left: 12px;
+}
+
+/* logo and location */
+
+.logo_search{
+    height: 120px;
+    margin-top: 22px;
+}
+
+.logo_search .logo{
+    float: left;
+    line-height: 100px;
+    width: 55px;
+}
+
+
+/* content */
+
+
+.login_form{
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.login_main{
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
+.login_form_inner{
+    
+    margin: 0 auto;
+    width: 400px;
+    height: 550px;
+    border: 1px solid rgb(195, 206, 206);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.real_form{
+    display: table;
+    margin: 100px auto;
+
+}
+
+.real_form span{
+    font-size: 26px;
+
+}
+
+.username{
+    width: 340px;
+    height: 40px;
+    margin-top: 30px;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.password{
+    width: 340px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+}
+.submit{
+    width: 340px;
+    height: 40px;
+    margin-top: 40px;
+    background-color: rgb(165, 165, 245);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.registration_container {
+    width: 340px;
+
+    margin: 30px auto;
+
+}
+
+.registration a i{
+    float: left;
+    font-size: 16px;
+}
+
+.registration span{
+    float: right;
+}

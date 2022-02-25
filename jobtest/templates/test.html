@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纽约找工作 求职 招聘</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="././static/css/base.css">
+    <link rel="stylesheet" href="././static/css/fa/css/all.css">
+    <script type="text/javascript" src="../static/js/index.js"> </script>
+    <script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+
+
+        const searchsubmit = {
+
+            mainjob: "",
+            job: "",
+
+        }
+
+
+        const result = {
+            value: "",
+        }
+
+
+        $(function () {
+
+
+            Object.defineProperties(searchsubmit, {
+                mainjob: {
+                    configurable: true,
+                    get: function () {
+                        console.log('get: ', mainjob)
+                        return mainjob
+                    },
+                    set: function (newValue) {
+                        //mainjob = newValue;
+                        //console.log('set: ', mainjob)
+
+                        if(manjob!=newValue){
+                            mainjob = newValue;
+                            ajaxapply(searchsubmit);
+                        }
+
+                    }
+                },
+                job: {
+                    configurable: true,
+                    get: function () {
+                        console.log('get: ', job)
+                        return job;
+                    },
+                    set: function (newValue) {
+                        // job = newValue;
+                        // console.log('set: ', job)
+
+                        if(job!=newValue){
+                            job = newValue;
+                            ajaxapply(searchsubmit);
+                        }
+                    }
+                }
+            })
+
+
+            function ajaxapply(searchinput) {
+                $.ajax({
+                    url: "/test_ajax/",  // 请求的url
+                    type: "get",  // post  请求的方式
+                    data: searchinput,
+                    success: function (data) {  // 回调函数
+                        console.log(data)
+                    }
+                })
+            }
+
+
+
+            $(".jobs_nav li a").click(function () {
+
+                $(this).parents(".jobs").children(".jobs_nav").each(function () {
+
+                    $(this).find("a").removeClass("selected");
+                });
+                $(this).attr("class", "selected");
+
+
+                searchsubmit.job = "";
+
+                var temp = RetSelecteds();
+                //alert(temp.value)
+
+
+                searchsubmit.mainjob = temp.value;
+                //alert(searchsubmt.mainjob)
+
+                alert(searchsubmit.job + "+" + searchsubmit.mainjob);
+                $(this).removeClass("selected");
+
+            });
+
+
+
+
+            $(".nav_pop_list a").click(function () {
+
+                $(this).parents(".nav_pop").parents(".nav_pop_content").children(".nav_pop").each(function () {
+                    $(this).find("a").removeClass("selected");
+                });
+                $(this).attr("class", "selected");
+
+                var temp = RetSelecteds();
+
+                searchsubmit.job = temp.value;
+                searchsubmit.mainjob = "";
+                alert(searchsubmit.job + "+" + searchsubmit.mainjob);
+                $(this).removeClass("selected");
+
+            });
+
+
+        });
+
+
+        function RetSelecteds() {
+
+            $("a[class='selected']").each(function () {
+                var current = $(this).text();
+                //var temp = jQuery.makeArray(current);
+                result.value = current;
+            });
+            return result;
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    <div class="top_bar">
+        <div class="top_bar_content w">
+            <div class="top_bar_left">
+                <ul>
+                    <li><a href="#">中文/English</a></li>
+                    <li><a href="#">App 下载</a></li>
+                </ul>
+
+            </div>
+            <div class="top_bar_right">
+                <ul>
+                    <li><a href="./register.html">注册</a></li>
+                    <li class="spliter">/</li>
+                    <li><a href="./login.html">登入</a></li>
+                    <li><a href="./post2.html">我要招聘</a></li>
+                    <li><a href="#">找工作</a></li>
+                    <li><a href="#">职场百科</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo_search w">
+
+
+        <div class="logo">
+            <a href="#"><img src="./img/logo.jpg" alt="logo"></a>
+        </div>
+
+
+        <div class="search_wrapper">
+
+            <div class="location">
+                <a href="#">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>纽约</span>
+                </a>
+            </div>
+
+            <div class="search_bar">
+                <form class="search" action="#">
+                    <input class="search_inp" type="text" name="search" placeholder="搜索职位，公司">
+                    <button class="search_btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="menu w">
+
+        <div class="jobs ">
+
+
+            <ul class="jobs_nav" id="jobs_nav">
+                <li class="jobs_nav_list" id="service"><a href="#">服务业</a></li>
+                <li class="jobs_nav_list" id="office"><a href="#">人事/行政/财务</a></li>
+                <li class="jobs_nav_list" id="transportation"><a href="#">物流/运输/贸易</a></li>
+                <li class="jobs_nav_list" id="education"><a href="#">教育/广告/传媒</a></li>
+                <li class="jobs_nav_list" id="marketing"><a href="#">市场/销售</a></li>
+                <li class="jobs_nav_list" id="accoutting"><a href="#">会计/金融/银行/保险</a></li>
+                <li class="jobs_nav_list" id="computer"><a href="#">计算机/互联网/通信/电子</a></li>
+                <li class="jobs_nav_list" id="nav_pop_office"><a href="#">制药/医疗</a></li>
+                <li class="jobs_nav_list" id="ads"><a href="#">广告/媒体</a></li>
+                <li class="jobs_nav_list" id="constraction"><a href="#">房地产/建筑</a></li>
+                <li class="jobs_nav_list" id="government"><a href="#">政府/非营利组织/其他</a></li>
+
+            </ul>
+
+            <div class="nav_pop_container" id="nav_pop_container">
+                <div class="nav_pop_content">
+
+                    <div class="nav_pop" id="nav_pop_service">
+
+                        <div class="nav_pop_list">
+                            <a>美容师</a>
+                            <a>美甲师</a>
+                            <a>健身教练</a>
+                            <a>学徒</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">服务员</a>
+                            <a href="#">收银员</a>
+                            <a href="#">前台</a>
+                            <a href="#">酒店管理</a>
+                            <a href="#">店长</a>
+                            <a href="#">签证</a>
+                            <a href="#">旅游顾问</a>
+                            <a href="#">签证</a>
+                            <a href="#">旅游销售</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">保姆</a>
+                            <a href="#">护理</a>
+                            <a href="#">保洁</a>
+                            <a href="#">月嫂</a>
+                            <a href="#">司机</a>
+                            <a href="#">家政</a>
+                        </div>
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">会计</a>
+                            <a href="#">税务</a>
+                            <a href="#">出纳</a>
+                            <a href="#">财务顾问</a>
+                            <a href="#">财务经理</a>
+                            <a href="#">财务主管</a>
+                            <a href="#">财务分析</a>
+                            <a href="#">法务专员</a>
+                            <a href="#">法律顾问</a>
+                            <a href="#">律师</a>
+                            <a href="#">法务主管</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">人力资源专员</a>
+                            <a href="#">人力资源主管</a>
+                            <a href="#">培训</a>
+                            <a href="#">薪资待遇</a>
+                            <a href="#">绩效考核</a>
+                            <a href="#">人力资源经理</a>
+                            <a href="#">员工关系</a>
+                            <a href="#">组织发展</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">行政专员</a>
+                            <a href="#">前台</a>
+                            <a href="#">行政主管</a>
+                            <a href="#">后勤</a>
+                            <a href="#">行政总监</a>
+                            <a href="#">司机</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">贸易进口</a>
+                            <a href="#">批发/零售</a>
+                            <a href="#">快速消费品(食品、饮料、化妆品)</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">服装/纺织/皮革</a>
+                            <a href="#">家具/家电/玩具/礼品</a>
+                            <a href="#">奢侈品/收藏品/工艺品/珠宝</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">办公用品及设备</a>
+                            <a href="#">机械/设备/重工</a>
+                            <a href="#">汽车</a>
+                            <a href="#">汽车零配件</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">家教</a>
+                            <a href="#">数学</a>
+                            <a href="#">语文</a>
+                            <a href="#">英语</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">广告</a>
+                            <a href="#">公关/市场推广/会展</a>
+                            <a href="#">影视/媒体/艺术/文化/文化传媒</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">文字媒体/出版</a>
+                            <a href="#">印刷/造纸/包装</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">会计</a>
+                            <a href="#">税务</a>
+                            <a href="#">出纳</a>
+                            <a href="#">财务顾问</a>
+                            <a href="#">财务经理</a>
+                            <a href="#">财务主管</a>
+                            <a href="#">财务分析</a>
+                            <a href="#">法务专员</a>
+                            <a href="#">法律顾问</a>
+                            <a href="#">律师</a>
+                            <a href="#">法务主管</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">人力资源专员</a>
+                            <a href="#">人力资源主管</a>
+                            <a href="#">培训</a>
+                            <a href="#">薪资待遇</a>
+                            <a href="#">绩效考核</a>
+                            <a href="#">人力资源经理</a>
+                            <a href="#">员工关系</a>
+                            <a href="#">组织发展</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">行政专员</a>
+                            <a href="#">前台</a>
+                            <a href="#">行政主管</a>
+                            <a href="#">后勤</a>
+                            <a href="#">行政总监</a>
+                            <a href="#">司机</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">会计</a>
+                            <a href="#">审计</a>
+                            <a href="#">银行</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">金融</a>
+                            <a href="#">投资</a>
+                            <a href="#">证券</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">保险</a>
+                            <a href="#">拍卖</a>
+                            <a href="#">典当</a>
+                            <a href="#">信托</a>
+                            <a href="#">担保</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">计算机软件</a>
+                            <a href="#">计算机硬件</a>
+                            <a href="#">计算机服务(维修、系统、数据维护)</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">通信/电信/网络设备</a>
+                            <a href="#">通信/电信运营、增值服务</a>
+                            <a href="#">互联网/电子服务</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">网络游戏</a>
+                            <a href="#">半导体/集成电路</a>
+                            <a href="#">仪器仪表/电子工业化</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">制药</a>
+                            <a href="#">生物工程</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">医疗</a>
+                            <a href="#">护理</a>
+                            <a href="#">卫生</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">医疗设备</a>
+                            <a href="#">器械</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">会计</a>
+                            <a href="#">税务</a>
+                            <a href="#">出纳</a>
+                            <a href="#">财务顾问</a>
+                            <a href="#">财务经理</a>
+                            <a href="#">财务主管</a>
+                            <a href="#">财务分析</a>
+                            <a href="#">法务专员</a>
+                            <a href="#">法律顾问</a>
+                            <a href="#">律师</a>
+                            <a href="#">法务主管</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">人力资源专员</a>
+                            <a href="#">人力资源主管</a>
+                            <a href="#">培训</a>
+                            <a href="#">薪资待遇</a>
+                            <a href="#">绩效考核</a>
+                            <a href="#">人力资源经理</a>
+                            <a href="#">员工关系</a>
+                            <a href="#">组织发展</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">行政专员</a>
+                            <a href="#">前台</a>
+                            <a href="#">行政主管</a>
+                            <a href="#">后勤</a>
+                            <a href="#">行政总监</a>
+                            <a href="#">司机</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">房地产</a>
+                            <a href="#">建筑</a>
+                            <a href="#">建材</a>
+                            <a href="#">工程</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">家居</a>
+                            <a href="#">室内设计</a>
+                            <a href="#">装潢</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">物业管理/商业中心</a>
+                            <a href="#">中介服务</a>
+                            <a href="#">租赁服务</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav_pop" id="nav_pop_office">
+
+                        <div class="nav_pop_list">
+                            <a href="#">政府公共事业</a>
+                            <a href="#">非盈利机构</a>
+                        </div>
+
+                        <div class="nav_pop_list">
+                            <a href="#">多元化业务公司</a>
+                            <a href="#">农业/林业/渔业/牧业</a>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="filter w">
+        <div class="filter_content">
+
+            <div class="filter_experience">
+                <a class="firstlink" href="#">工作年限
+                    <i class="fas fa-angle-down"></i>
+                </a>
+
+
+
+
+                <select name="cars" id="cars">
+                    <option value="volvo">不限</option>
+                    <option value="saab">在校生</option>
+                    <option value="mercedes">应届生</option>
+                    <option value="audi">1年内</option>
+                </select>
+                <!-- <ul class="experience_ul">
+                    <li><a href="#">不限</a></li>
+                    <li><a href="#">在校生</a></li>
+                    <li><a href="#">应届生</a></li>
+                    <li><a href="#">1年内</a></li>
+                    <li><a href="#">1-3年</a></li>
+                    <li><a href="#">3-5年</a></li>
+                    <li><a href="#">5-10年</a></li>
+                    <li><a href="#">10年以上</a></li>
+                </ul> -->
+
+            </div>
+
+            <div class="filter_education">
+                <a class="firstlink" href="#">教育程度
+                    <i class="fas fa-angle-down"></i>
+                </a>
+
+                <ul class="education_ul">
+                    <li><a href="#">不限</a></li>
+                    <li><a href="#">初中及以下</a></li>
+                    <li><a href="#">中专</a></li>
+                    <li><a href="#">高中</a></li>
+                    <li><a href="#">大专</a></li>
+                    <li><a href="#">本科</a></li>
+                    <li><a href="#">硕士</a></li>
+                    <li><a href="#">博士</a></li>
+                </ul>
+
+            </div>
+
+            <div class="filter_salary">
+                <a class="firstlink" href="#">工资水平
+                    <i class="fas fa-angle-down"></i>
+
+                </a>
+                <ul>
+                    <li><a href="#">不限</a></li>
+                    <li><a href="#">$2000/月及以下</a></li>
+                    <li><a href="#">$2000 - 2500/月</a></li>
+                    <li><a href="#">$2500 - 3000/月</a></li>
+                    <li><a href="#">$3000 - 3500/月</a></li>
+                    <li><a href="#">$4000 - 5000/月</a></li>
+                    <li><a href="#">$5000 - 10000/月</a></li>
+                    <li><a href="#">$10000/月以上</a></li>
+                </ul>
+            </div>
+
+            <div class="filter_company_size">
+                <a class="firstlink" href="#">公司规模
+                    <i class="fas fa-angle-down"></i>
+
+                </a>
+                <ul>
+                    <li><a href="#">不限</a></li>
+                    <li><a href="#">1-10人</a></li>
+                    <li><a href="#">11-25人</a></li>
+                    <li><a href="#">25-50人</a></li>
+                    <li><a href="#">50-100人</a></li>
+                    <li><a href="#">100-200人</a></li>
+                    <li><a href="#">200-500人</a></li>
+                    <li><a href="#">500以上</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jobs_info w">
+        <div class="jobs_brief" id="jobs_brief">
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <!-- <span style="margin-left: -10px;">------------------------------------------------</span> -->
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="jobs_card">
+                <div class="job_card_inner">
+                    <a href="#">
+                        <div class="job_card_brief">
+                            <ul class="job_title">
+                                <span>软件工程师</span>
+                            </ul>
+                            <ul class="company_name">
+                                <i class="fas fa-landmark"></i>
+                                <span>
+                                    HHT Future Inc.
+                                </span>
+                            </ul>
+                            <ul class="company_address">
+                                <i class="fas fa-map-marker"></i>
+                                <span>法拉盛, 纽约 11201</span>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="applyMethod">
+                                <!-- <i class="fas fa-arrow-circle-right"></i> -->
+                                <!-- <span>使用简历申请</span> <br> -->
+                                <span
+                                    style="margin-left: -10px;">------------------------------------------------</span>
+                            </ul>
+                        </div>
+
+                        <div class="job_card_description">
+                            <ul> <span> > 熟练使用HTML,CSS, Javascript</span> </ul>
+                            <ul> <span>> 工作年限2年以上 </span> </ul>
+
+                        </div>
+                        <div class="publish_time">
+                            <span>发布时间：2022/01/01</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="jobs_detail" id="jobs_detail">
+            <span>
+
+                <h1>招聘软件工程师</h1> <br>
+                基本要求：<br>
+
+                1:安卓谷歌账号等级铂金以上或Ios账号一年以上。（必须美国账号）<br>
+
+                2:工作细心，有耐心，有责任心。<br>
+
+                3:熟悉各类App操作。<br>
+
+                4:能快速有效完成公司分配任务。<br>
+
+                时薪50到200美金，无需任何押金。全程自己操作，公司有指导员手把手教学！<br>
+
+                联系人：东东<br>
+
+                VX; Jkq0506
+            </span>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_content">
+            <div class="contact">
+                <div>
+
+                    <ul>
+                        <li>销售热线: <span>+ 1(347) 530-8648</span></li>
+                        <li>客服热线: <span>+ 1(347) 530-8648</span></li>
+                        <li>email: <span>hhtfuture@gmaiil.com</span></li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="footer_center">
+                <div>
+                    简介
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">法律协议</a></li>
+
+                        <li><a href="#">隐私条款</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_cooperation">
+                <div>
+                    合作
+                    <ul>
+                        <li><a href="#">加入我们</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_help">
+                <div>
+                    帮助
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">常见问题</a></li>
+
+                        <li><a href="#">新手指导</a></li>
+
+                        <li><a href="#">举报</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_qr">
+
+                <div>
+
+                    微信联系
+
+                    <ul>
+                        <li><img src="./img/qrcode.jpg" alt=""></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

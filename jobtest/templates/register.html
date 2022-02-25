@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/fa/css/all.css">
+</head>
+<body>
+
+    <div class="top_bar">
+        <div class="top_bar_content w">
+            <div class="top_bar_left">
+                <ul>
+                    <li><a href="#">中文/English</a></li>
+                    <li><a href="#">App 下载</a></li>
+                </ul>
+
+            </div>
+            <div class="top_bar_right">
+                <ul>
+                    <li><a href="./login.html">登入</a></li>
+                    <!-- <li class="spliter">/</li> -->
+                    <!-- <li><a href="#">登入</a></li> -->
+                    <!-- <li><a href="#">我要招聘</a></li>
+                    <li><a href="#">找工作</a></li> -->
+                    <li><a href="#">职场百科</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="login_form ">
+        <div class="login_main">
+            <div class="login_form_inner">
+                <div class="registration_container">
+                    <div class="registration">
+                        <span>
+                            <a href="./login.html">已有账号？请登入</a>
+                        </span>
+                        <a href="./index.html"><i class="fas fa-arrow-left"></i></a>
+                        
+                    </div>
+
+                </div>
+
+                <form action=" " class="real_form" method="post">
+                    <span>欢迎注册新用户</span>
+                    <br>
+                    {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                    {% endif %}
+
+                     {% csrf_token %}
+                    <br>
+                    <ul>
+                        User Name:<li class="username21">{{ register_form.username}} </li>
+                        Email:<li class="password22">{{ register_form.email}} </li>
+                        Password:<li class="password22">{{ register_form.password1}} </li>
+                        Confirm Password:<li class="password12">{{ register_form.password2}} </li>
+
+                    </ul>
+                    <!-- <div><a href="#">忘记秘密？</a></div> -->
+                    <input class="submit" type="submit" value="提交">
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

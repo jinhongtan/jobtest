@@ -1,0 +1,425 @@
+
+/* top_bar */
+
+.top_bar{
+    height: 40px;
+    background-color:orange;
+}
+
+.top_bar_content{
+    line-height: 40px;
+    margin: auto;
+}
+
+.top_bar_left{
+    float: left;
+}
+
+.top_bar_left ul li{
+    float: left;
+}
+
+.top_bar_left ul li{
+    margin-right: 12px;
+}
+
+.top_bar_right{
+    float: right;
+}
+
+.top_bar_right ul li{
+    float: right;
+}
+
+.top_bar_right ul li{
+    margin-left: 12px;
+}
+
+/* logo and location */
+
+.logo_search{
+    height: 120px;
+    margin-top: 22px;
+}
+
+.logo_search .logo{
+    float: left;
+    line-height: 100px;
+    width: 55px;
+}
+
+
+
+/* search*/
+
+.search_wrapper{
+    height: 50px;
+    border: 1px solid #224224;
+    float:left;
+    margin-top: 25px;
+    margin-left: 80px;
+}
+
+.search_wrapper div{
+    float: left;
+}
+
+.search_wrapper .location{
+    height: 48px;
+    width: 90px;
+    border-right: 1px solid #224224;
+    font-size: 16px;
+    
+}
+
+.search_wrapper .location a{
+    line-height: 48px;
+    margin-left: 15px;
+}
+
+.search_wrapper .location a span{
+    margin-left: 4px;
+}
+
+
+.search_wrapper .search_bar .search_inp{
+    width: 500px;
+    border: none;
+    border-right: 1px solid #224224;
+    height: 48px;
+    float: left;
+    padding: 0 10px;
+    font-size: 16px;
+
+}
+
+
+.search_wrapper .search_bar .search_btn i{
+    font-size: 20px;
+}
+
+.search_wrapper .search_bar .search_btn
+{
+    float: left;
+    height: 48px;
+    width: 100px;
+    border:none;
+    background-color: white;
+}
+
+.search_wrapper .search_bar .search_inp:focus{
+    outline:1px solid #ff6700
+}
+
+
+.search_wrapper .search_bar .search_btn:hover{
+    background-color: #ff6700;
+}
+
+.search_wrapper .search_bar .search_btn:hover i{
+    color:white;
+}
+
+
+
+
+
+/* menu bar */
+
+.menu{
+    height: 50px;
+    background-color: rgb(119, 231, 231);
+}
+
+.jobs{
+    position: relative;
+    margin-left: 20px;
+}
+
+.jobs ul li{
+    float: left;
+    margin-right: 15px;
+    line-height: 50px;
+    
+}
+
+
+.jobs ul li a{
+    color:black;
+    
+}
+
+
+
+
+/* nav-wrapper */
+
+
+/* nav_pop */
+
+.nav_pop_container{
+    width: 1226px;
+    height: 140px;
+    margin-left: -20px;
+    background-color: #fc8f46;
+    position: absolute;
+    top: 50px;
+    z-index: 9999;
+    display: none;
+    
+}
+
+.nav_pop_content{
+    margin: 10px 20px 10px;
+    
+}
+
+.nav_pop{
+    display: none;
+}
+
+.nav_pop_list{
+    margin-top: 20px;
+}
+
+.nav_pop_list a{
+    margin-right: 30px;
+    color: black;
+}
+
+.nav_pop_list a:hover{
+    color: white;
+}
+
+.jobs_nav:hover> .nav_pop_container{
+    height: 180px;
+    width: 1226px;
+    display: block;
+}
+
+
+
+
+
+/* filter */
+
+.filter{
+    /* border: 1px solid rgb(185, 132, 132); */
+    height: 40px;
+    background-color: rgb(248, 241, 241);
+    border-top: none;
+}
+
+.filter_content div .firstlink{
+
+line-height: 40px;
+}
+
+
+
+.filter_content div{
+    float: left; 
+    width: 220px;
+    border-top: 10px;
+    position: relative;
+    z-index: 999;
+    /* line-height: 40px; */
+   
+}
+
+.filter_content div ul{
+    
+    position: absolute;
+    margin-left: 10px;
+    /* margin-top: 1px; */
+    overflow: hidden;
+    height: 0;
+    width: 200px;
+    background-color:white;
+    
+}
+
+.filter_content div a{
+    margin-left: 20px;
+}
+
+/* experience */
+
+.filter_experience:hover >ul{
+    height: 180px;
+    border: 1px solid rgb(230, 195, 195);
+    border-top: none;
+    
+}
+
+.filter_experience ul li:hover{
+    background-color: rgb(171, 196, 243);
+}
+
+/* education */
+
+.filter_education:hover >ul{
+    height: 180px;
+    border: 1px solid rgb(230, 195, 195);
+    border-top: none;
+    
+}
+
+.filter_education ul li:hover{
+    background-color: rgb(171, 196, 243);
+}
+
+
+/* salary */
+
+.filter_salary:hover >ul{
+    height: 180px;
+    border: 1px solid rgb(230, 195, 195);
+    border-top: none;
+    
+}
+
+.filter_salary ul li:hover{
+    background-color: rgb(171, 196, 243);
+}
+
+
+/* company size */
+
+.filter_company_size:hover >ul{
+    height: 180px;
+    border: 1px solid rgb(230, 195, 195);
+    border-top: none;
+    
+}
+
+.filter_company_size ul li:hover{
+    background-color: rgb(171, 196, 243);
+}
+
+.filter_company_size{
+    margin-right: 100px;
+    
+}
+
+
+
+
+/* jobs slides */
+
+
+
+
+.jobs_brief{
+    height: calc(100%);
+    /* float: left; */
+    margin-top: 50px;
+    width: 400px;
+    border: 1px, solid, black;
+
+}
+
+.jobs_card{
+    border: 1px solid #d4d2d0;
+    border-radius: 6px;
+    /* float: left; */
+    margin-top:8.5px;
+    width: 400px;
+}
+
+
+.job_card_brief ul{
+    font-size: 16px;
+}
+
+.job_card_brief ul i{
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.job_card_inner{
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.job_card_inner ul i{
+    font-size: 10px;
+    color: black;
+    line-height: 1;
+}
+
+.job_title span{
+    font-size: 18px;
+}
+
+
+.company_name span{
+    font-size: 16px;
+}
+
+.company_address span{
+    font-size: 16px;
+}
+
+
+.job_card_description span{
+    font-size: 13px;
+    color: black;
+}
+
+.publish_time span{
+    font-size: 13px;
+    color: black;
+}
+
+
+/* job details */
+
+.jobs_detail{
+    float: right;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-left: 426px;
+    top: 0px;
+    /* float: right; */
+    margin-top:calc(-100%);
+    width: 800px;
+    height:700px ;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+
+.footer{
+    /* height: 180px; */
+    background-color: #caccca;
+    
+}
+
+.footer_content{
+    height: 300px;
+    margin:auto;
+    margin-top: 100px;
+    margin-left: 400px;
+}
+
+.footer_content div{
+    float: left;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.footer_qr div img{
+    width: 70px;
+}
+
+.city{
+height:30px;
+}
+
+.city span{
+    display: block;
+    float: left;
+    margin-right: 50px;
+}

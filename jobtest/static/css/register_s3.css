@@ -1,0 +1,198 @@
+/* top_bar */
+
+.top_bar{
+    height: 40px;
+    background-color:orange;
+}
+
+.top_bar_content{
+    line-height: 40px;
+    margin: auto;
+}
+
+.top_bar_left{
+    float: left;
+}
+
+.top_bar_left ul li{
+    float: left;
+}
+
+.top_bar_left ul li{
+    margin-right: 12px;
+}
+
+.top_bar_right{
+    float: right;
+}
+
+.top_bar_right ul li{
+    float: right;
+}
+
+.top_bar_right ul li{
+    margin-left: 12px;
+}
+
+/* logo and location */
+
+.logo_search{
+    height: 120px;
+    margin-top: 22px;
+}
+
+.logo_search .logo{
+    float: left;
+    line-height: 100px;
+    width: 55px;
+}
+
+
+/* content */
+
+
+.background{
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.main{
+    
+    margin:100px auto;
+    width: 400px;
+    border: 1px solid rgb(195, 206, 206);
+}
+
+
+.inner{
+    
+    margin: 0 auto;
+    width: 340px;
+    border-radius: 4px;
+    margin-top: 10px;
+    /* background-color: rgb(171, 241, 191); */
+
+}
+
+
+
+.inner_top{
+    margin: 30px auto;
+    height: 12px;
+    
+}
+
+.inner_top_content .saveandexit{
+        float: right;
+}
+
+.inner_top_content .backpage{
+    float: left;
+}
+
+
+.inner .title{
+    font-size: 26px;
+    margin-bottom: 15px;
+   
+    
+}
+
+.edudetail {
+    height: 70px;
+}
+
+.edudetail .edutable{
+    float: left;
+}
+
+
+.edudetail .eduedit{
+    float: right;
+}
+
+
+/* education form details */
+
+.form{
+     
+    margin: 0px auto;
+    /* position: relative;
+    height: 0;
+    overflow: hidden; */
+    /* background-color: white; */
+
+}
+
+.schoolname{
+    width: 340px;
+    height: 40px;
+    margin-top: 10px;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.major{
+    width: 180px;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+}
+
+.schoolcity{
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    float: right;
+    /* margin-bottom: 8px; */
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+}
+
+.schoolstart{
+    width: 155px;
+    height: 40px;
+    margin-top: 20px;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+
+}
+
+.graduatetime{
+    width: 155px;
+    height: 40px;
+    margin-top: 20px;
+    float: right;
+    border: 1px solid #9a9795;
+    border-radius: 6px;
+
+}
+
+
+/* end of education form details */
+
+
+
+/* submit bottom */
+
+.save{
+    width: 150px;
+    height: 40px;
+    margin: 40px auto;
+    background-color: rgb(165, 165, 245);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.next{
+    width: 150px;
+    height: 40px;
+    margin: 40px auto;
+    margin-left: 36px;
+    background-color: rgb(165, 165, 245);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}

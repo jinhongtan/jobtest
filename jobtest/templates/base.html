@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/fa/css/all.css">
+    <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+    <script type="text/javascript" src="../static/js/index.js"> </script>
+    <script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"> </script>
+     <script type="text/javascript">
+
+
+        const searchsubmit = {
+            mainjob: "",
+            job: "",
+            input: "",
+        }
+
+
+        const result = {
+            value: "",
+        }
+
+        var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+
+        $(function () {
+            Object.defineProperties(searchsubmit, {
+
+                mainjob: {
+                    configurable: true,
+                    get: function () {
+                        console.log('Mainjob_get: ', mainjob)
+                        return mainjob;
+                    },
+                    set: function (newValue) {
+                        mainjob = newValue;
+                        console.log('Mainjob_set: ', mainjob);
+                        ajaxapply();
+                    }
+                },
+
+                job: {
+                    configurable: true,
+                    get: function () {
+                        console.log('JOB_get: ', job)
+                        return job;
+                    },
+                    set: function (newValue) {
+                        job = newValue,
+                            console.log('JOB_set: ', job)
+
+                    }
+                },
+
+                input: {
+                    configurable: true,
+                    get: function () {
+                        console.log('input_get: ', input)
+                        return input;
+                    },
+                    set: function (newValue) {
+                        input = newValue;
+                        console.log('input_set: ', input);
+
+                    }
+                }
+            })
+
+
+            function ajaxapply() {
+
+                var Job = searchsubmit.job;
+                var Mainjob = searchsubmit.mainjob;
+                var Input = searchsubmit.input;
+
+                $.ajax({
+                    url: "test_ajax",  // 请求的url
+                    type: "POST",  // post  请求的方式
+                    dataType: "json",
+                    scriptCharset: "UTF-8",
+                    data: { 'job': Job, 'mainjob': Mainjob, 'input':Input },
+                    success: function (response) {  // 回调函数
+                        jobs=JSON.parse(response.jobs)
+                        console.log(JSON.parse(response.jobs))
+                        console.log("total jobs is:"+jobs.length)
+                        console.log(jobs[0]["fields"]["title"])
+
+
+                    }
+                })
+            }
+
+
+
+            $(".jobs_nav li a").click(function () {
+
+                $(this).parents(".jobs").children(".jobs_nav").each(function () {
+
+                    $(this).find("a").removeClass("selected");
+                });
+                $(this).attr("class", "selected");
+
+
+                searchsubmit.job = "";
+
+                var temp = RetSelecteds();
+                //alert(temp.value)
+
+
+                searchsubmit.mainjob = temp.value;
+                //alert(searchsubmt.mainjob)
+
+                alert(searchsubmit.job + "+" + searchsubmit.mainjob + "+" + searchsubmit.input);
+                $(this).removeClass("selected");
+
+            });
+
+
+
+
+            $(".nav_pop_list a").click(function () {
+
+                $(this).parents(".nav_pop").parents(".nav_pop_content").children(".nav_pop").each(function () {
+                    $(this).find("a").removeClass("selected");
+                });
+                $(this).attr("class", "selected");
+
+                var temp = RetSelecteds();
+
+                searchsubmit.job = temp.value;
+                searchsubmit.mainjob = "";
+                alert(searchsubmit.job + "+" + searchsubmit.mainjob+ "+" + searchsubmit.input);
+                $(this).removeClass("selected");
+
+            });
+
+
+
+
+        });
+
+
+
+
+        function RetSelecteds() {
+
+
+            $("a[class='selected']").each(function () {
+                var current = $(this).text();
+                //var temp = jQuery.makeArray(current);
+                result.value = current;
+            });
+            return result;
+        }
+
+
+        function print() {
+            var a = myform.name.value;
+            searchsubmit.input=a
+        }
+
+
+
+
+
+    </script>
+<!--  <script type="text/javascript">-->
+
+
+<!--        const searchsubmit = {-->
+<!--            mainjob: "",-->
+<!--            job: "",-->
+<!--            input:"",-->
+<!--        }-->
+
+
+<!--        const result = {-->
+<!--            value: "",-->
+<!--        }-->
+
+<!--        var csrf = $('input[name="csrfmiddlewaretoken"]').val();-->
+
+<!--        $(function () {-->
+<!--            Object.defineProperties(searchsubmit, {-->
+
+<!--                mainjob: {-->
+<!--                    configurable: true,-->
+<!--                    get: function () {-->
+<!--                        console.log('Mainjob_get: ', mainjob)-->
+<!--                        return mainjob;-->
+<!--                    },-->
+<!--                    set: function (newValue) {-->
+<!--                        mainjob = newValue;-->
+<!--                        console.log('Mainjob_set: ', mainjob);-->
+<!--                        ajaxapply();-->
+<!--                    }-->
+<!--                },-->
+
+<!--                job: {-->
+<!--                    configurable: true,-->
+<!--                    get: function () {-->
+<!--                        console.log('JOB_get: ', job)-->
+<!--                        return job;-->
+<!--                    },-->
+<!--                    set: function (newValue) {-->
+<!--                        job = newValue,-->
+<!--                            console.log('JOB_set: ', job)-->
+
+<!--                    }-->
+<!--                },-->
+
+<!--                input: {-->
+<!--                    configurable: true,-->
+<!--                    get: function () {-->
+<!--                        console.log('input_get: ', input)-->
+<!--                        return input;-->
+<!--                    },-->
+<!--                    set: function (newValue) {-->
+<!--                        input = newValue;-->
+<!--                        console.log('input_set: ', input);-->
+
+<!--                    }-->
+<!--                }-->
+<!--            })-->
+
+
+<!--            function ajaxapply() {-->
+
+<!--                var Job = searchsubmit.job;-->
+<!--                var Mainjob = searchsubmit.mainjob;-->
+
+<!--                $.ajax({-->
+<!--                    url: "test_ajax",  // 请求的url-->
+<!--                    type: "POST",  // post  请求的方式-->
+<!--                    dataType: "json",-->
+<!--                    scriptCharset:"UTF-8",-->
+<!--                    data: { 'job': Job, 'mainjob': Mainjob},-->
+<!--                    success: function (response) {  // 回调函数-->
+<!--                        console.log(response.a)-->
+<!--                    }-->
+<!--                })-->
+<!--            }-->
+
+
+
+<!--            $(".jobs_nav li a").click(function () {-->
+
+<!--                $(this).parents(".jobs").children(".jobs_nav").each(function () {-->
+
+<!--                    $(this).find("a").removeClass("selected");-->
+<!--                });-->
+<!--                $(this).attr("class", "selected");-->
+
+
+<!--                searchsubmit.job = "";-->
+
+<!--                var temp = RetSelecteds();-->
+<!--                //alert(temp.value)-->
+
+
+<!--                searchsubmit.mainjob = temp.value;-->
+<!--                //alert(searchsubmt.mainjob)-->
+
+<!--                alert(searchsubmit.job + "+" + searchsubmit.mainjob);-->
+<!--                $(this).removeClass("selected");-->
+
+<!--            });-->
+
+
+
+
+<!--            $(".nav_pop_list a").click(function () {-->
+
+<!--                $(this).parents(".nav_pop").parents(".nav_pop_content").children(".nav_pop").each(function () {-->
+<!--                    $(this).find("a").removeClass("selected");-->
+<!--                });-->
+<!--                $(this).attr("class", "selected");-->
+
+<!--                var temp = RetSelecteds();-->
+
+<!--                searchsubmit.job = temp.value;-->
+<!--                searchsubmit.mainjob = "";-->
+<!--                alert(searchsubmit.job + "+" + searchsubmit.mainjob);-->
+<!--                $(this).removeClass("selected");-->
+
+<!--            });-->
+
+<!--            $(".nav_pop_list a").click(function () {-->
+
+<!--                $(this).parents(".nav_pop").parents(".nav_pop_content").children(".nav_pop").each(function () {-->
+<!--                    $(this).find("a").removeClass("selected");-->
+<!--                });-->
+<!--                $(this).attr("class", "selected");-->
+
+<!--                var temp = RetSelecteds();-->
+
+<!--                searchsubmit.job = temp.value;-->
+<!--                searchsubmit.mainjob = "";-->
+<!--                alert(searchsubmit.job + "+" + searchsubmit.mainjob);-->
+<!--                $(this).removeClass("selected");-->
+
+<!--            });-->
+
+
+<!--        });-->
+
+
+
+
+<!--        function RetSelecteds() {-->
+
+
+<!--            $("a[class='selected']").each(function () {-->
+<!--                var current = $(this).text();-->
+<!--                //var temp = jQuery.makeArray(current);-->
+<!--                result.value = current;-->
+<!--            });-->
+<!--            return result;-->
+<!--        }-->
+
+<!--    </script>-->
+</head>
+<body>
+
+
+<div class="top_bar">
+        <div class="top_bar_content w">
+            <div class="top_bar_left">
+                <ul>
+<!--                    <li><a href="#">中文/English</a></li>-->
+<!--                    <li><a href="#">App 下载</a></li>-->
+                </ul>
+
+            </div>
+            <div class="top_bar_right">
+                <ul>
+
+
+                    {% if not request.session.user_name%}
+                    <li><a href="{% url 'register' %}">注册</a></li>
+                    <li class="spliter">/</li>
+                    <li><a href="{% url 'login' %}">登入</a></li>
+                    {% else %}
+                    <li><a href="{% url 'logout' %}">退出</a></li>
+                    <li><a href="{% url 'logout' %}">Hi:{{ request.session.user_name}}</a></li>
+                    {% endif%}
+                    <li><a href="/post2">我要招聘</a></li>
+<!--                    <li><a href="#">找工作</a></li>-->
+<!--                    <li><a href="#">职场百科</a></li>-->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% block mainbody%}
+{% endblock mainbody%}
+
+<div class="footer">
+        <div class="footer_content">
+            <div class="contact">
+                <div>
+
+                    <ul>
+                        <li>销售热线: <span>+ 1(347) 530-8648</span></li>
+                        <li>客服热线: <span>+ 1(347) 530-8648</span></li>
+                        <li>email: <span>hhtfuture@gmaiil.com</span></li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="footer_center">
+                <div>
+                    简介
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">法律协议</a></li>
+
+                        <li><a href="#">隐私条款</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_cooperation">
+                <div>
+                    合作
+                    <ul>
+                        <li><a href="#">加入我们</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_help">
+                <div>
+                    帮助
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">常见问题</a></li>
+
+                        <li><a href="#">新手指导</a></li>
+
+                        <li><a href="#">举报</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_qr">
+
+                <div>
+
+                    微信联系
+
+                    <ul>
+                        <li><img src="./img/qrcode.jpg" alt=""></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
